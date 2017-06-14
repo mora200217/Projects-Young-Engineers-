@@ -1,7 +1,8 @@
 var height = 0;
 var width = 0;
+var numAsteroids = 2;
 
-var MAX_VEL =  0.5; // Maximum Velocity allowed
+var MAX_VEL =  0.2; // Maximum Velocity allowed
 var TOTAL_FRICTION = 0.01; // Friction for the ship movement
 
 function setup(){
@@ -11,6 +12,10 @@ function setup(){
   width = windowWidth;
   createCanvas(windowWidth - DIFF_INIT, windowHeight - DIFF_INIT);
   ship = new Ship();
+  asteroids = [];
+  for(var i = 0; i < numAsteroids; i++){
+  asteroids[i] = new Asteroid(10);
+  }
 }
 
 function draw(){
@@ -18,6 +23,9 @@ function draw(){
   ship.render();
   ship.turn();
   ship.update();
+  for(var i = 0; i < numAsteroids; i++){
+  asteroids[i].render();
+  }
 }
 
 // KEY RELEASED EVENT
@@ -56,9 +64,11 @@ function Ship(){
   this.render = function(){
     noFill();
     stroke(255);
+    push();
     translate(this.pos.x, this.pos.y);
     rotate(this.heading + PI/2);
     triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+    pop();
   }
   // UPDATE FUNCTION
   this.update = function(){
@@ -87,8 +97,9 @@ function Ship(){
     var force = p5.Vector.fromAngle(this.heading, MAX_VEL);
     this.vel.add(force);
     force.mult((1 - TOTAL_FRICTION) * 2);
+
   }
-  // THIS SET ROTATION
+  // SET ROTATION
   this.setRotation = function(angle){
     this.rotation = angle;
   }
@@ -96,5 +107,14 @@ function Ship(){
   this.turn = function(){
     this.heading += this.rotation;
   }
+}
 
+// ASTEROIDS FUNCTION
+function Asteroid(size){
+  this.size = size;
+  this.vel = p5.Vector.fromAngle(12, MAX_VEL/2);
+  this.pos = createVector(2,100);
+  this.render = function(){
+    ellipse(this.pos.x, this.pos.y, size, size);
+  }
 }
