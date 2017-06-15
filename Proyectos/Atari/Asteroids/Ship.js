@@ -5,7 +5,7 @@ function Ship(){
   this.r = SHIP_SIZE; // Radius
   this.heading = 0; // Heading of the Ship
   this.rotation = 0;
-  this.vel = createVector(0,0);
+  this.vel = createVector(0,0); // Create Vector Velocity
   this.isBoosting = false;
 
   // BOOSTING FUNCTION
