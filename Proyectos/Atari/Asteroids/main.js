@@ -92,8 +92,27 @@ function Ship(){
     this.vel.mult(1 - TOTAL_FRICTION);
     this.boosting();
     this.edges();
+    this.collisionElement = this.isColliding();
+    if(this.collisionElement[0]){ // Boolean Component of the returned tuple
+      this.collisionElement[1].destroy();
+    }
+    // if(this.isColliding){
+    //   // this.destroy();
+    // }
   }
 
+  // COLLISION DETECTION FUNCTION
+  this.isColliding = function(){
+    for(var i = 0; i < asteroids.length; i++){
+      if(this.pos.x  > asteroids[i].pos.x - asteroids[i].size && this.pos.x  < asteroids[i].pos.x + asteroids[i].size ){
+        if(this.pos.y  > asteroids[i].pos.y - asteroids[i].size && this.pos.y  < asteroids[i].pos.y + asteroids[i].size ){
+          return [true,asteroids[i]];
+        }
+      }
+    }
+    return [false,NaN];
+
+  }
   // EDGES FUNCTION
   this.edges = function(){
     if(this.pos.x < 0 + - this.r){
@@ -108,6 +127,7 @@ function Ship(){
     }
 
   }
+
   // BOOST FUNCTION
   this.boost = function(){
     var force = p5.Vector.fromAngle(this.heading);
