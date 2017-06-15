@@ -9,6 +9,7 @@ var MIN_ASTEROID_SIZE = 30; // Minimum Asteroid size
 var MAX_VERTEX =  5; // Amount of vertex within the polygonal Asteroids fig.
 var SPACE_BAR = 32; // Space Bar Key Code
 var SHOOT_LIFETIME = 10; // In seconds
+var SHIP_SIZE =  15;
 
 shoots = [];
 
@@ -34,7 +35,6 @@ function draw(){
   for(var i = 0; i < numAsteroids; i++){
     asteroids[i].render();
     asteroids[i].update();
-    asteroids[i].edges();
   }
   for(var i = 0; i < shoots.length; i++){
     shoots[i].update();
@@ -64,7 +64,7 @@ function keyPressed(){
 // SHIP CLASS CREATED
 function Ship(){
   this.pos = createVector(width/2, height/2)
-  this.r = 20; // Radius
+  this.r = SHIP_SIZE; // Radius
   this.heading = 0; // Heading of the Ship
   this.rotation = 0;
   this.vel = createVector(0,0);
@@ -110,10 +110,8 @@ function Ship(){
   }
   // BOOST FUNCTION
   this.boost = function(){
-
-      var force = p5.Vector.fromAngle(this.heading);
-      force.mult((TOTAL_FRICTION * 30));
-
+    var force = p5.Vector.fromAngle(this.heading);
+    force.mult((TOTAL_FRICTION * 30));
     this.vel.add(force);
   }
   // SET ROTATION

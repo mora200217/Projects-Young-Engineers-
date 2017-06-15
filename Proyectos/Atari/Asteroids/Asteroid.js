@@ -7,7 +7,7 @@ function Asteroid(){
   this.numVertex = floor(random(5,15));
   this.offset = [];
   for(var i = 0; i < this.numVertex; i++){
-    this.offset[i] = random(-5,5);
+    this.offset[i] = random(-15,2);
   }
 
   // RENDER FUNCTION
@@ -28,6 +28,7 @@ function Asteroid(){
   }
   this.update = function(){
     this.pos.add(this.vel);
+    this.edges();
   }
   this.edges = function(){
     if(this.pos.x < 0 + - this.size){
