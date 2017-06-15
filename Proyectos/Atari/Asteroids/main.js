@@ -4,10 +4,13 @@ var numAsteroids = 7;
 
 var MAX_VEL =  0.2; // Maximum Velocity allowed
 var TOTAL_FRICTION = 0.01; // Friction for the ship movement
-var MAX_ASTEROID_SIZE = 60;
-var MIN_ASTEROID_SIZE = 30;
-var MAX_VERTEX =  5;
+var MAX_ASTEROID_SIZE = 60; // Maximum Asteroid size
+var MIN_ASTEROID_SIZE = 30; // Minimum Asteroid size
+var MAX_VERTEX =  5; // Amount of vertex within the polygonal Asteroids fig.
 var SPACE_BAR = 32; // Space Bar Key Code
+var SHOOT_LIFETIME = 10; // In seconds
+
+shoots = [];
 
 function setup(){
   // Defining Initial Configuration
@@ -27,10 +30,14 @@ function draw(){
   ship.render();
   ship.turn();
   ship.update();
+
   for(var i = 0; i < numAsteroids; i++){
     asteroids[i].render();
     asteroids[i].update();
     asteroids[i].edges();
+  }
+  for(var i = 0; i < shoots.length; i++){
+    shoots[i].update();
   }
 }
 
@@ -60,7 +67,7 @@ function Ship(){
   this.r = 20; // Radius
   this.heading = 0; // Heading of the Ship
   this.rotation = 0;
-  this.vel = createVector(1,0);
+  this.vel = createVector(0,0);
   this.isBoosting = false;
 
   // BOOSTING FUNCTION
@@ -103,10 +110,11 @@ function Ship(){
   }
   // BOOST FUNCTION
   this.boost = function(){
-    var force = p5.Vector.fromAngle(this.heading, MAX_VEL);
-    this.vel.add(force);
-    force.mult((1 - TOTAL_FRICTION) * 2);
 
+      var force = p5.Vector.fromAngle(this.heading);
+      force.mult((TOTAL_FRICTION * 30));
+
+    this.vel.add(force);
   }
   // SET ROTATION
   this.setRotation = function(angle){
@@ -118,51 +126,7 @@ function Ship(){
   }
   // SHOOT FUNCTION
   this.shoot = function(){
-    ellipse(this.pos.x, this.pos.y, 20,20);
-  }
-}
-
-// ASTEROIDS FUNCTION
-function Asteroid(){
-  this.size = random(15,50);
-  this.pos = createVector(Math.random() * width,Math.random() * height);
-  this.vel = p5.Vector.fromAngle(Math.random() * 2 * PI, MAX_VEL * 10);
-  this.numVertex = floor(random(5,15));
-  this.offset = [];
-  for(var i = 0; i < this.numVertex; i++){
-    this.offset[i] = random(-5,5);
-  }
-
-  // RENDER FUNCTION
-  this.render = function(){
-    push();
-    translate(this.pos.x, this.pos.y);
-    beginShape();
-    for(var i = 0; i < this.numVertex; i++){
-      var angle = map(i, 0, this.numVertex, 0, TWO_PI);
-      var r = this.size + this.offset[i];
-      var x = r * cos(angle);
-      var y = r * sin(angle);
-      vertex(x,y);
-    }
-
-    endShape(CLOSE);
-    pop();
-  }
-  this.update = function(){
-    this.pos.add(this.vel);
-  }
-  this.edges = function(){
-    if(this.pos.x < 0 + - this.size){
-      this.pos.x = width;
-    }else if(this.pos.x > width + this.size){
-      this.pos.x = 0;
-    }
-    if(this.pos.y < 0 - this.size){
-      this.pos.y = height;
-    }else if(this.pos.y > height + this.size){
-      this.pos.y = 0;
-    }
-
+    shootElement = new Shoot(this.r);
+    shoots.push(shootElement);
   }
 }
