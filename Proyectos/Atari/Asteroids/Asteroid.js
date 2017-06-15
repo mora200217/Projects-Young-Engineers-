@@ -26,6 +26,10 @@ function Asteroid(){
     endShape(CLOSE);
     pop();
   }
+  // DESTROY FUNCTION
+  this.destroy = function(){
+    reset();
+  }
   this.update = function(){
     this.pos.add(this.vel);
     this.edges();
