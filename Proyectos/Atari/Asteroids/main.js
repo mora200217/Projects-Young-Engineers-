@@ -1,9 +1,13 @@
 var height = 0;
 var width = 0;
-var numAsteroids = 2;
+var numAsteroids = 7;
 
 var MAX_VEL =  0.2; // Maximum Velocity allowed
 var TOTAL_FRICTION = 0.01; // Friction for the ship movement
+var MAX_ASTEROID_SIZE = 60;
+var MIN_ASTEROID_SIZE = 30;
+var MAX_VERTEX =  5;
+var SPACE_BAR = 32; // Space Bar Key Code
 
 function setup(){
   // Defining Initial Configuration
@@ -14,7 +18,7 @@ function setup(){
   ship = new Ship();
   asteroids = [];
   for(var i = 0; i < numAsteroids; i++){
-  asteroids[i] = new Asteroid(10);
+    asteroids[i] = new Asteroid();
   }
 }
 
@@ -24,7 +28,9 @@ function draw(){
   ship.turn();
   ship.update();
   for(var i = 0; i < numAsteroids; i++){
-  asteroids[i].render();
+    asteroids[i].render();
+    asteroids[i].update();
+    asteroids[i].edges();
   }
 }
 
@@ -42,6 +48,9 @@ function keyPressed(){
     ship.setRotation(-0.1);
   }else if(keyCode == UP_ARROW){
     ship.isBoosting = true;
+  }
+  if(keyCode == SPACE_BAR){
+    ship.shoot();
   }
 }
 
@@ -107,14 +116,53 @@ function Ship(){
   this.turn = function(){
     this.heading += this.rotation;
   }
+  // SHOOT FUNCTION
+  this.shoot = function(){
+    ellipse(this.pos.x, this.pos.y, 20,20);
+  }
 }
 
 // ASTEROIDS FUNCTION
-function Asteroid(size){
-  this.size = size;
-  this.vel = p5.Vector.fromAngle(12, MAX_VEL/2);
-  this.pos = createVector(2,100);
+function Asteroid(){
+  this.size = random(15,50);
+  this.pos = createVector(Math.random() * width,Math.random() * height);
+  this.vel = p5.Vector.fromAngle(Math.random() * 2 * PI, MAX_VEL * 10);
+  this.numVertex = floor(random(5,15));
+  this.offset = [];
+  for(var i = 0; i < this.numVertex; i++){
+    this.offset[i] = random(-5,5);
+  }
+
+  // RENDER FUNCTION
   this.render = function(){
-    ellipse(this.pos.x, this.pos.y, size, size);
+    push();
+    translate(this.pos.x, this.pos.y);
+    beginShape();
+    for(var i = 0; i < this.numVertex; i++){
+      var angle = map(i, 0, this.numVertex, 0, TWO_PI);
+      var r = this.size + this.offset[i];
+      var x = r * cos(angle);
+      var y = r * sin(angle);
+      vertex(x,y);
+    }
+
+    endShape(CLOSE);
+    pop();
+  }
+  this.update = function(){
+    this.pos.add(this.vel);
+  }
+  this.edges = function(){
+    if(this.pos.x < 0 + - this.size){
+      this.pos.x = width;
+    }else if(this.pos.x > width + this.size){
+      this.pos.x = 0;
+    }
+    if(this.pos.y < 0 - this.size){
+      this.pos.y = height;
+    }else if(this.pos.y > height + this.size){
+      this.pos.y = 0;
+    }
+
   }
 }
