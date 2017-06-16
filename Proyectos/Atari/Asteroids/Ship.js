@@ -5,7 +5,7 @@ function Ship(){
   this.r = SHIP_SIZE; // Radius
   this.heading = 0; // Heading of the Ship
   this.rotation = 0;
-  this.vel = createVector(0,0); // Create Vector Velocity
+  this.vel = createVector(0,0);
   this.isBoosting = false;
 
   // BOOSTING FUNCTION
@@ -32,24 +32,35 @@ function Ship(){
     this.edges();
     this.collisionElement = this.isColliding();
     if(this.collisionElement[0]){ // Boolean Component of the returned tuple
-      this.collisionElement[1].destroy();
+      this.resetShip();
     }
-    // if(this.isColliding){
-    //   // this.destroy();
-    // }
   }
+
+  // RESET SHIP FUNCTION
+  this.resetShip = function(){
+      this.pos = createVector(width / 2, height / 2);
+      console.log("Collision Detected!");
+      this.blink();
+      this.vel.mult(0); // Reset Ships Velocity
+  }
+
+  // BLINK FUNCTION
+  this.blink = function(){
+    // IDEA: Blink Ship after collision
+    stroke(0);
+    stroke(255);
+  }
+
 
   // COLLISION DETECTION FUNCTION
   this.isColliding = function(){
-    for(var i = 0; i < asteroids.length; i++){
-      if(this.pos.x  > asteroids[i].pos.x - asteroids[i].size && this.pos.x  < asteroids[i].pos.x + asteroids[i].size ){
-        if(this.pos.y  > asteroids[i].pos.y - asteroids[i].size && this.pos.y  < asteroids[i].pos.y + asteroids[i].size ){
+    for(i in asteroids){
+      var d = dist(asteroids[i].pos.x, asteroids[i].pos.y, this.pos.x, this.pos.y);
+      if(d < asteroids[i].size){
           return [true,asteroids[i]];
-        }
       }
     }
     return [false,NaN];
-
   }
   // EDGES FUNCTION
   this.edges = function(){

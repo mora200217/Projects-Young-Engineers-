@@ -10,6 +10,7 @@ var MAX_VERTEX =  5; // Amount of vertex within the polygonal Asteroids fig.
 var SPACE_BAR = 32; // Space Bar Key Code
 var SHOOT_LIFETIME = 10; // In seconds
 var SHIP_SIZE =  15;
+var MAX_ALLOWED_SIZE = 5;
 
 shoots = [];
 
@@ -58,93 +59,5 @@ function keyPressed(){
   }
   if(keyCode == SPACE_BAR){
     ship.shoot();
-  }
-}
-
-// SHIP CLASS CREATED
-function Ship(){
-  this.pos = createVector(width/2, height/2)
-  this.r = SHIP_SIZE; // Radius
-  this.heading = 0; // Heading of the Ship
-  this.rotation = 0;
-  this.vel = createVector(0,0);
-  this.isBoosting = false;
-
-  // BOOSTING FUNCTION
-  this.boosting = function(){
-    if(this.isBoosting){
-      this.boost();
-    }
-  }
-  // RENDER SHIP
-  this.render = function(){
-    noFill();
-    stroke(255);
-    push();
-    translate(this.pos.x, this.pos.y);
-    rotate(this.heading + PI/2);
-    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
-    pop();
-  }
-  // UPDATE FUNCTION
-  this.update = function(){
-    this.pos.add(this.vel);
-    this.vel.mult(1 - TOTAL_FRICTION);
-    this.boosting();
-    this.edges();
-    this.collisionElement = this.isColliding();
-    if(this.collisionElement[0]){ // Boolean Component of the returned tuple
-      this.collisionElement[1].destroy();
-    }
-    // if(this.isColliding){
-    //   // this.destroy();
-    // }
-  }
-
-  // COLLISION DETECTION FUNCTION
-  this.isColliding = function(){
-    for(var i = 0; i < asteroids.length; i++){
-      if(this.pos.x  > asteroids[i].pos.x - asteroids[i].size && this.pos.x  < asteroids[i].pos.x + asteroids[i].size ){
-        if(this.pos.y  > asteroids[i].pos.y - asteroids[i].size && this.pos.y  < asteroids[i].pos.y + asteroids[i].size ){
-          return [true,asteroids[i]];
-        }
-      }
-    }
-    return [false,NaN];
-
-  }
-  // EDGES FUNCTION
-  this.edges = function(){
-    if(this.pos.x < 0 + - this.r){
-      this.pos.x = width;
-    }else if(this.pos.x > width + this.r){
-      this.pos.x = 0;
-    }
-    if(this.pos.y < 0 - this.r){
-      this.pos.y = height;
-    }else if(this.pos.y > height + this.r){
-      this.pos.y = 0;
-    }
-
-  }
-
-  // BOOST FUNCTION
-  this.boost = function(){
-    var force = p5.Vector.fromAngle(this.heading);
-    force.mult((TOTAL_FRICTION * 30));
-    this.vel.add(force);
-  }
-  // SET ROTATION
-  this.setRotation = function(angle){
-    this.rotation = angle;
-  }
-  // TURN SHIP
-  this.turn = function(){
-    this.heading += this.rotation;
-  }
-  // SHOOT FUNCTION
-  this.shoot = function(){
-    shootElement = new Shoot(this.r);
-    shoots.push(shootElement);
   }
 }
