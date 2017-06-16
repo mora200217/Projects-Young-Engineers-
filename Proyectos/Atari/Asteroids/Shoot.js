@@ -23,4 +23,16 @@ function Shoot(size){
   this.getPosition = function(){
     return this.pos;
   }
+  // COLLISION DETECTION FUNCTION
+  this.isColliding = function(){
+    for(var i = 0; i < asteroids.length; i++){
+      if(this.pos.x  > asteroids[i].pos.x - asteroids[i].size && this.pos.x  < asteroids[i].pos.x + asteroids[i].size ){
+        if(this.pos.y  > asteroids[i].pos.y - asteroids[i].size && this.pos.y  < asteroids[i].pos.y + asteroids[i].size ){
+          return [true,asteroids[i]];
+        }
+      }
+    }
+    return [false,NaN];
+
+  }
 }
