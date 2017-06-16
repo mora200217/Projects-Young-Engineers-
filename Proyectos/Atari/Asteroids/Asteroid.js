@@ -39,14 +39,18 @@ function Asteroid(){
   this.divide = function(){
     this.childAsteroids = map(this.size, 0, MAX_ASTEROID_SIZE, 2,4);
     for(var i = 0; i < this.childAsteroids; i++){
-      asteroids.append(new Asteroid)
+      asteroids.push(new Asteroid)
     }
     this.destroy();
   }
 
   // DESTROY FUNCTION
   this.destroy = function(){
-    delete this; 
+    for(var i = 0; i < asteroids.length; i++){
+      if(asteroids[i] == this){
+        asteroids.splice(i, 1);
+      }
+    }
   }
 
   // UPDATE FUNCTION

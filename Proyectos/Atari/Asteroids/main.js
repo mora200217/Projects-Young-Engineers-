@@ -10,6 +10,7 @@ var MAX_VERTEX =  5; // Amount of vertex within the polygonal Asteroids fig.
 var SPACE_BAR = 32; // Space Bar Key Code
 var SHOOT_LIFETIME = 10; // In seconds
 var SHIP_SIZE =  15;
+var MAX_ALLOWED_SIZE = 5;
 
 shoots = [];
 

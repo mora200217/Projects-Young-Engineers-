@@ -13,11 +13,18 @@ function Shoot(size){
   this.update = function(){
     point(this.shootPos.x, this.shootPos.y);
     this.shootPos.add(this.shootVel); // Translate pos by velocity vector
-
+    this.collisionInfo = this.isColliding();
+    if(this.collisionInfo[0]){
+      console.log("Shooted!");
+      this.collisionInfo[1].collide();
+      this.destroy();
+    }
   }
   // DESTROY SHOOT FUNCTION
   this.destroy = function(){
-    delete(this);
+    for(var i = 0; i < shoots.length; i++){
+      shoots.splice(i, 1);
+    }
   }
   // GETTER SHOOT POSITION FUNCTION
   this.getPosition = function(){
@@ -26,8 +33,8 @@ function Shoot(size){
   // COLLISION DETECTION FUNCTION
   this.isColliding = function(){
     for(var i = 0; i < asteroids.length; i++){
-      if(this.pos.x  > asteroids[i].pos.x - asteroids[i].size && this.pos.x  < asteroids[i].pos.x + asteroids[i].size ){
-        if(this.pos.y  > asteroids[i].pos.y - asteroids[i].size && this.pos.y  < asteroids[i].pos.y + asteroids[i].size ){
+      if(this.shootPos.x  > asteroids[i].pos.x - asteroids[i].size && this.shootPos.x  < asteroids[i].pos.x + asteroids[i].size ){
+        if(this.shootPos.y  > asteroids[i].pos.y - asteroids[i].size && this.shootPos.y  < asteroids[i].pos.y + asteroids[i].size ){
           return [true,asteroids[i]];
         }
       }
