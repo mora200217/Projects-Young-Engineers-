@@ -32,11 +32,10 @@ function Shoot(size){
   }
   // COLLISION DETECTION FUNCTION
   this.isColliding = function(){
-    for(var i = 0; i < asteroids.length; i++){
-      if(this.shootPos.x  > asteroids[i].pos.x - asteroids[i].size && this.shootPos.x  < asteroids[i].pos.x + asteroids[i].size ){
-        if(this.shootPos.y  > asteroids[i].pos.y - asteroids[i].size && this.shootPos.y  < asteroids[i].pos.y + asteroids[i].size ){
+    for(i in asteroids){
+      var d = dist(asteroids[i].pos.x, asteroids[i].pos.y, this.shootPos.x, this.shootPos.y);
+      if(d < asteroids[i].size){
           return [true,asteroids[i]];
-        }
       }
     }
     return [false,NaN];
