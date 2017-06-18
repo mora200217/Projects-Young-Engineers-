@@ -23,7 +23,7 @@ function Ship(){
     rotate(this.heading + PI/2);
     beginShape();
     vertex(-this.r, this.r); // Left Node
-    vertex(0, -this.r / 2); // Down Node
+    vertex(0, this.r / 2); // Down Node
     vertex(this.r, this.r); // Right Node
     vertex(0, -this.r); // Up Node
     endShape(CLOSE);
