@@ -21,7 +21,12 @@ function Ship(){
     push();
     translate(this.pos.x, this.pos.y);
     rotate(this.heading + PI/2);
-    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+    beginShape();
+    vertex(-this.r, this.r); // Left Node
+    vertex(0, this.r / 2); // Down Node
+    vertex(this.r, this.r); // Right Node
+    vertex(0, -this.r); // Up Node
+    endShape(CLOSE);
     pop();
   }
   // UPDATE FUNCTION

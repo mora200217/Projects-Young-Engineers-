@@ -4,14 +4,14 @@ function Shoot(size){
   this.heading = ship.heading;
   this.lifeTime = SHOOT_LIFETIME;
   this.shootVel = p5.Vector.fromAngle(this.heading);
-  this.shootVel.mult(MAX_VEL^4);
+  this.shootVel.mult(MAX_VEL^5);
   var x = ship.pos.x + (cos(this.heading) * this.offset);
   var y = ship.pos.y + (sin(this.heading) * this.offset);
   this.shootPos = createVector(x,y);
 
   // UPDATE SHOOT FUNCTION
   this.update = function(){
-    point(this.shootPos.x, this.shootPos.y);
+    ellipse(this.shootPos.x, this.shootPos.y, 2, 2);
     this.shootPos.add(this.shootVel); // Translate pos by velocity vector
     this.collisionInfo = this.isColliding();
     if(this.collisionInfo[0]){

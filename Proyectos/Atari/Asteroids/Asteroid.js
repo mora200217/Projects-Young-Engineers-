@@ -1,8 +1,15 @@
 
 // ASTEROIDS FUNCTION
-function Asteroid(){
-  this.size = random(15,50);
-  this.pos = createVector(Math.random() * width,Math.random() * height);
+function Asteroid(newPos, newSize){
+  if(newPos == newSize){
+    this.pos = createVector(Math.random() * width,Math.random() * height);
+    this.size = random(15,50);
+  }else{
+    this.size = random(5,newSize);
+    this.newOffset = createVector(random(-5,5), random(-5,5));
+    this.newPos = newPos;
+    this.pos = this.newPos.add(this.newOffset); // Copy Position
+  }
   this.vel = p5.Vector.fromAngle(Math.random() * 2 * PI, MAX_VEL * 10);
   this.numVertex = floor(random(5,15));
   this.offset = [];
@@ -28,7 +35,8 @@ function Asteroid(){
   }
   // COLLIDE FUNCTION
   this.collide = function(){
-    if(this.size <= MAX_ALLOWED_SIZE){
+    if(this.size <= MAX_ALLOWED_SIZE / 2){
+      console.log("Destroyed!");
       this.destroy();
     }else{
       this.divide();
@@ -38,10 +46,16 @@ function Asteroid(){
   // DIVIDE FUNCTION
   this.divide = function(){
     this.childAsteroids = map(this.size, 0, MAX_ASTEROID_SIZE, 2,4);
-    for(var i = 0; i < this.childAsteroids; i++){
-      asteroids.push(new Asteroid)
-    }
+    stroke(255);
+    noFill();
+    this.createNewAsteroid(this.pos, this.size);
     this.destroy();
+  }
+
+  // CREATE NEW ASTEROID FUNCTION
+  this.createNewAsteroid = function(inputPos, inputSize){
+    var elementA = new Asteroid(inputPos, inputSize);
+    asteroids.push(elementA);
   }
 
   // DESTROY FUNCTION
