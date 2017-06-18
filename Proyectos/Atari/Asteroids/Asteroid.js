@@ -5,7 +5,7 @@ function Asteroid(newPos, newSize){
     this.pos = createVector(Math.random() * width,Math.random() * height);
     this.size = random(15,50);
   }else{
-    this.size = random(5,newSize / 2);
+    this.size = random(5,newSize);
     this.newOffset = createVector(random(-5,5), random(-5,5));
     this.newPos = newPos;
     this.pos = this.newPos.add(this.newOffset); // Copy Position
