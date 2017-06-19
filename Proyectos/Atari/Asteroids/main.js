@@ -42,6 +42,7 @@ function draw(){
   }
 }
 
+// TODO: Test  id:3
 // KEY RELEASED EVENT
 function keyReleased(){
   ship.setRotation(0);

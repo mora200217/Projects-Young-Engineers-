@@ -51,7 +51,9 @@ function Ship(){
 
   // BLINK FUNCTION
   this.blink = function(){
-    // IDEA: Blink Ship after collision
+    // IDEA: Blink Ship after collision id:0
+    // IDEA: Finish this crap! +enhacement id:1
+    // TODO: O yeah  id:2
     stroke(0);
     stroke(255);
   }
