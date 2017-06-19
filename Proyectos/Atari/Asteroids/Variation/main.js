@@ -33,16 +33,18 @@ function draw(){
   ship.turn();
   ship.update();
 
-  for(var i = 0; i < numAsteroids; i++){
-    asteroids[i].render();
-    asteroids[i].update();
-  }
   for(var i = 0; i < shoots.length; i++){
     shoots[i].update();
   }
+
+  for(var i = 0; i < asteroids.length; i++){
+    // TODO: Delete Null conditional - Improve Code  id:6
+    asteroids[i].render();
+    asteroids[i].update();
+  }
+
 }
 
-// TODO: Test  id:3
 // KEY RELEASED EVENT
 function keyReleased(){
   ship.setRotation(0);

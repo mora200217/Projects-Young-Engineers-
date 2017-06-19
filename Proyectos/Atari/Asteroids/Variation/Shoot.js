@@ -15,7 +15,7 @@ function Shoot(size){
     this.shootPos.add(this.shootVel); // Translate pos by velocity vector
     this.collisionInfo = this.isColliding();
     if(this.collisionInfo[0]){
-      console.log("Shooted!");
+      // console.log("Shooted!");
       this.collisionInfo[1].collide();
       this.destroy();
     }
@@ -32,7 +32,7 @@ function Shoot(size){
   }
   // COLLISION DETECTION FUNCTION
   this.isColliding = function(){
-    for(i in asteroids){
+    for(var i = asteroids.length - 1; i > 0; i --){
       var d = dist(asteroids[i].pos.x, asteroids[i].pos.y, this.shootPos.x, this.shootPos.y);
       if(d < asteroids[i].size){
           return [true,asteroids[i]];
