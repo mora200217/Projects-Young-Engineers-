@@ -44,7 +44,12 @@ function Ship() {
     rotate(this.heading + PI / 2);
     fill(0);
     stroke(255);
-    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+    beginShape();
+    vertex(0, -this.r);
+    vertex(this.r, this.r);
+    vertex(0, this.r / 2);
+    vertex(-this.r, this.r);
+    endShape(CLOSE);
     pop();
   }
 
