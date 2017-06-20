@@ -12,6 +12,8 @@ function Ship() {
   this.rotation = 0;
   this.vel = createVector(0, 0);
   this.isBoosting = false;
+  this.len = 0;
+  this.showFire = false;
 
   // BOOSTING FUNCTION
   this.boosting = function(b) {
@@ -21,7 +23,10 @@ function Ship() {
   // UPDATE FUNCTION
   this.update = function() {
     if (this.isBoosting) {
+      this.showFire = true;
       this.boost();
+    }else{
+      this.showFire = false;
     }
     this.pos.add(this.vel);
     this.vel.mult(0.99);
@@ -32,6 +37,7 @@ function Ship() {
     var force = p5.Vector.fromAngle(this.heading); // Create Vector from angle
     force.mult(0.3); // Multiply force Vector
     this.vel.add(force); // Add Force to vel vector
+    this.len = abs(this.force);
   }
 
   // HITS FUNCTION
@@ -60,12 +66,13 @@ function Ship() {
     vertex(0, this.r / 2);
     vertex(-this.r, this.r);
     endShape(CLOSE);
+    this.fire();
     pop();
   }
 
   // EDGES FUNCTION
   this.edges = function() {
-    // Function for offscreen ship 
+    // Function for offscreen ship
     if (this.pos.x > width + this.r) {
       this.pos.x = -this.r;
     } else if (this.pos.x < -this.r) {
@@ -86,6 +93,21 @@ function Ship() {
   // TURN FUNCTION
   this.turn = function() {
     this.heading += this.rotation;
+  }
+
+  // PARTICLE SYSTEM FUNCTION
+  this.fire = function(){
+    this.len = max(this.vel.x,this.vel.y  );
+    if(this.showFire){
+      stroke(255);
+      fill(255);
+    }else{
+      noFill();
+      stroke(0);
+    }
+    this.fixedPos = this.r ;
+    triangle(0, this.fixedPos * 2 , -this.fixedPos / 4, this.fixedPos, this.fixedPos / 4, this.fixedPos);
+
   }
 
 }
