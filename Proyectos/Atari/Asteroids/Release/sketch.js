@@ -7,10 +7,13 @@ var ship;
 var asteroids = [];
 var lasers = [];
 
+var MAX_LIFES = 3; // Max lifes for the ship
+var LIFE_RADIUS = 10;
+var LIFE_SEPARATION = 10;
 // MAIN SETUP FUNCTION
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  ship = new Ship();
+  ship = new Ship(MAX_LIFES);
   for (var i = 0; i < 5; i++) {
     asteroids.push(new Asteroid());
   }
@@ -22,7 +25,9 @@ function draw() {
 
   for (var i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      console.log('ooops!');
+      lifes.splice(lifes.length - 1, 1);
+      ship.pos = createVector(width/2, height/2); 
+      console.log("Hit!");
     }
     asteroids[i].render();
     asteroids[i].update();

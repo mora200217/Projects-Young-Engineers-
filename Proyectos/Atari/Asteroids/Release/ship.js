@@ -4,8 +4,9 @@
 // Code for: https://youtu.be/hacZU523FyM
 
 // CLASS SHIP CREATED
-function Ship() {
+function Ship(initialLifes) {
   // Declare main initial atributes
+  this.lifes = initialLifes;
   this.pos = createVector(width / 2, height / 2);
   this.r = 15;
   this.heading = 0;
@@ -14,7 +15,10 @@ function Ship() {
   this.isBoosting = false;
   this.len = 0;
   this.showFire = false;
-
+  lifes = [];
+  for(var i = 0; i < initialLifes; i ++){
+    lifes.push(new life(i + 1,MAX_LIFES));
+  }
   // BOOSTING FUNCTION
   this.boosting = function(b) {
     this.isBoosting = b;
@@ -30,6 +34,11 @@ function Ship() {
     }
     this.pos.add(this.vel);
     this.vel.mult(0.99);
+    for(var i = 0; i < initialLifes; i ++){
+      if(lifes[i] != null){
+        lifes[i].render();
+      }
+    }
   }
 
   // BOOST FUNCTION
