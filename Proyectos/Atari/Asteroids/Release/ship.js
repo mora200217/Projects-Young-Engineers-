@@ -38,7 +38,7 @@ function Ship() {
   this.hits = function(asteroid) {
     // Proves distance between center of laser and asteroids position
     var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y);
-    // TODO: Improve Collision recognition
+    // TODO: Improve Collision recognition id:136
     // Return boolean state from function
     if (d < this.r + asteroid.r) {
       return true;

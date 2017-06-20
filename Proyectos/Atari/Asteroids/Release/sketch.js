@@ -33,7 +33,7 @@ function draw() {
   for (var i = lasers.length - 1; i >= 0; i--) {
     lasers[i].render(); // Invoke render function
     lasers[i].update(); // Update Laser - Pos
-    // IDEA: Conserve laser after offsecreen - replace with lifespan (Lifetime)
+    // IDEA: Conserve laser after offsecreen - replace with lifespan (Lifetime) id:138
     if (lasers[i].offscreen()) { // Invoke offsreen function - boolean return
       lasers.splice(i, 1); // Deletes Laser from laser array
     } else {

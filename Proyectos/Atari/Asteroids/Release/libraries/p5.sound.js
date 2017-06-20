@@ -2717,7 +2717,7 @@ fft = function () {
    *  frequency ranges ("bass", "lowMid", "mid", "highMid", "treble").
    *  Returns a range between 0 (no energy/volume at that frequency) and
    *  255 (maximum energy). 
-   *  <em>NOTE: analyze() must be called prior to getEnergy(). Analyze()
+   *  <em>NOTE: analyze() must be called prior to getEnergy(). Analyze() id:139
    *  tells the FFT to analyze frequency data, and getEnergy() uses
    *  the results determine the value at a specific frequency or
    *  range of frequencies.</em></p>
@@ -2792,7 +2792,7 @@ fft = function () {
    *  Returns the 
    *  <a href="http://en.wikipedia.org/wiki/Spectral_centroid" target="_blank">
    *  spectral centroid</a> of the input signal.
-   *  <em>NOTE: analyze() must be called prior to getCentroid(). Analyze()
+   *  <em>NOTE: analyze() must be called prior to getCentroid(). Analyze() id:132
    *  tells the FFT to analyze frequency data, and getCentroid() uses
    *  the results determine the spectral centroid.</em></p>
    *  
@@ -6509,7 +6509,7 @@ audioin = function () {
    *  Read the Amplitude (volume level) of an AudioIn. The AudioIn
    *  class contains its own instance of the Amplitude class to help
    *  make it easy to get a microphone's volume level. Accepts an
-   *  optional smoothing value (0.0 < 1.0). <em>NOTE: AudioIn must
+   *  optional smoothing value (0.0 < 1.0). <em>NOTE: AudioIn must id:134
    *  .start() before using .getLevel().</em><br/>
    *  
    *  @method  getLevel

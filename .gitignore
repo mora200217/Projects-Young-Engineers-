@@ -1,2 +1,3 @@
 *.yml
-.imdone
+.imdone/
+.json

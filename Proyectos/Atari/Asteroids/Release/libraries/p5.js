@@ -4401,8 +4401,8 @@ function fontToSfntTable(font) {
 
     var os2Table = os2.make({
         xAvgCharWidth: Math.round(globals.advanceWidthAvg),
-        usWeightClass: 500, // Medium FIXME Make this configurable
-        usWidthClass: 5, // Medium (normal) FIXME Make this configurable
+        usWeightClass: 500, // Medium FIXME Make this configurable id:140
+        usWidthClass: 5, // Medium (normal) FIXME Make this configurable id:142
         usFirstCharIndex: firstCharIndex,
         usLastCharIndex: lastCharIndex,
         ulUnicodeRange1: ulUnicodeRange1,
@@ -4594,7 +4594,7 @@ sizeOf.FWORD = sizeOf.SHORT;
 encode.UFWORD = encode.USHORT;
 sizeOf.UFWORD = sizeOf.USHORT;
 
-// FIXME Implement LONGDATETIME
+// FIXME Implement LONGDATETIME id:146
 encode.LONGDATETIME = function() {
     return [0, 0, 0, 0, 0, 0, 0, 0];
 };
@@ -4820,7 +4820,7 @@ encode.OPERAND = function(v, type) {
             d = d.concat(encode.REAL(v));
         } else {
             throw new Error('Unknown operand type ' + type);
-            // FIXME Add support for booleans
+            // FIXME Add support for booleans id:150
         }
     }
 
@@ -5584,7 +5584,7 @@ _dereq_('./webgl/interaction');
 /**
  * _globalInit
  *
- * TODO: ???
+ * TODO: ??? id:156
  * if sketch is on window
  * assume "global" mode
  * and instantiate p5 automatically
@@ -5604,7 +5604,7 @@ var _globalInit = function() {
   }
 };
 
-// TODO: ???
+// TODO: ??? id:141
 if (document.readyState === 'complete') {
   _globalInit();
 } else {
@@ -10759,7 +10759,7 @@ function report(message, func, color) {
 
 /**
  * Validate all the parameters of a function for number and type
- * NOTE THIS FUNCTION IS TEMPORARILY DISABLED UNTIL FURTHER WORK
+ * NOTE THIS FUNCTION IS TEMPORARILY DISABLED UNTIL FURTHER WORK id:143
  * AND UPDATES ARE IMPLEMENTED. -LMCCART
  *
  * @param  {String} func  name of function we're checking
@@ -10840,7 +10840,7 @@ p5.prototype._validateParameters = function(func, args, types) {
   }
 };
 /*
- * NOTE THIS FUNCTION IS TEMPORARILY DISABLED UNTIL FURTHER WORK
+ * NOTE THIS FUNCTION IS TEMPORARILY DISABLED UNTIL FURTHER WORK id:147
  * AND UPDATES ARE IMPLEMENTED. -LMCCART
  */
 p5.prototype._validateParameters = function() {
@@ -19390,7 +19390,7 @@ p5.Image.prototype.copy = function () {
  * http://blogs.adobe.com/webplatform/2013/01/28/blending-features-in-canvas/
  *
  */
-// TODO: - Accept an array of alpha values.
+// TODO: - Accept an array of alpha values. id:151
 //       - Use other channels of an image. p5 uses the
 //       blue channel (which feels kind of arbitrary). Note: at the
 //       moment this method does not match native processings original
@@ -27010,8 +27010,7 @@ var p5 = _dereq_('../core/core');
 var constants = _dereq_('../core/constants');
 
 /*
- * TODO:
- *
+ * TODO: * id:157
  * API:
  * -- textBounds()
  * -- getPath()
@@ -31833,7 +31832,7 @@ p5.RendererGL.prototype.background = function() {
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 };
 
-//@TODO implement this
+//@TODO implement this id:131
 // p5.RendererGL.prototype.clear = function() {
 //@TODO
 // };
@@ -31906,7 +31905,7 @@ function(shaderProgram, isImmediateMode) {
   shaderProgram.uMVMatrixUniform =
     gl.getUniformLocation(shaderProgram, 'uModelViewMatrix');
 
-  //@TODO: figure out a better way instead of if statement
+  //@TODO: figure out a better way instead of if statement id:133
   if(isImmediateMode === undefined){
     //normal Matrix uniform
     shaderProgram.uNMatrixUniform =
@@ -32135,7 +32134,7 @@ p5.RendererGL.prototype.clear = function() {
  * @todo implement handle for components or vector as args
  */
 p5.RendererGL.prototype.translate = function(x, y, z) {
-  //@TODO: figure out how to fit the resolution
+  //@TODO: figure out how to fit the resolution id:135
   x = x / RESOLUTION;
   y = -y / RESOLUTION;
   z = z / RESOLUTION;
@@ -32203,7 +32202,7 @@ p5.RendererGL.prototype.resetMatrix = function() {
 // Text/Typography
 // @TODO:
 p5.RendererGL.prototype._applyTextProperties = function() {
-  //@TODO finish implementation
+  //@TODO finish implementation id:137
   console.error('text commands not yet implemented in webgl');
 };
 module.exports = p5.RendererGL;
