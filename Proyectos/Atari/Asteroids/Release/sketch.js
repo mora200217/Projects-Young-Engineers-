@@ -7,6 +7,7 @@ var ship;
 var asteroids = [];
 var lasers = [];
 
+// MAIN SETUP FUNCTION
 function setup() {
   createCanvas(windowWidth, windowHeight);
   ship = new Ship();
@@ -15,6 +16,7 @@ function setup() {
   }
 }
 
+// MAIN DRAW FUNCTION
 function draw() {
   background(0);
 
@@ -27,28 +29,34 @@ function draw() {
     asteroids[i].edges();
   }
 
+  // Pass for each laser object within the environment
   for (var i = lasers.length - 1; i >= 0; i--) {
-    lasers[i].render();
-    lasers[i].update();
-    if (lasers[i].offscreen()) {
-      lasers.splice(i, 1);
+    lasers[i].render(); // Invoke render function
+    lasers[i].update(); // Update Laser - Pos
+    // IDEA: Conserve laser after offsecreen - replace with lifespan (Lifetime)
+    if (lasers[i].offscreen()) { // Invoke offsreen function - boolean return
+      lasers.splice(i, 1); // Deletes Laser from laser array
     } else {
+      // Oass through the asteroids array objects
       for (var j = asteroids.length - 1; j >= 0; j--) {
+        // Prove collision with lasers
         if (lasers[i].hits(asteroids[j])) {
+          // Proves the size of asteroids for later division
           if (asteroids[j].r > 10) {
-            var newAsteroids = asteroids[j].breakup();
-            asteroids = asteroids.concat(newAsteroids);
+            var newAsteroids = asteroids[j].breakup(); // Invokes breakup funcrion
+            asteroids = asteroids.concat(newAsteroids); // Cocatenates new asteroid
           }
-          asteroids.splice(j, 1);
-          lasers.splice(i, 1);
+          asteroids.splice(j, 1); // Deletes first asteroid from array
+          lasers.splice(i, 1); // Deletes first laser from array
           break;
         }
       }
     }
   }
 
-  console.log(lasers.length);
+  // console.log(lasers.length);
 
+  // Invokes respective functions for ship
   ship.render();
   ship.turn();
   ship.update();
@@ -57,11 +65,13 @@ function draw() {
 
 }
 
+// KEY RELEASED EVENT FUNCTION
 function keyReleased() {
   ship.setRotation(0);
   ship.boosting(false);
 }
 
+// KEY PRESSED EVENT FUNCTION
 function keyPressed() {
   if (key == ' ') {
     lasers.push(new Laser(ship.pos, ship.heading));

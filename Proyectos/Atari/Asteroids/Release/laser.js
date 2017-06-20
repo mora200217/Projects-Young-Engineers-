@@ -4,18 +4,20 @@
 // Code for: https://youtu.be/hacZU523FyM
 
 function Laser(spos, angle) {
-  this.pos = createVector(spos.x, spos.y);
+  this.offsetY = sin(angle);
+  this.offsetX = cos(angle);
+  this.pos = createVector(spos.x + this.offsetX * ship.r, spos.y + this.offsetY * ship.r);
   this.vel = p5.Vector.fromAngle(angle);
   this.vel.mult(10);
 
   this.update = function() {
     this.pos.add(this.vel);
   }
-  
+
   this.render = function() {
     push();
     stroke(255);
-    strokeWeight(4);
+    strokeWeight(2);
     point(this.pos.x, this.pos.y);
     pop();
   }

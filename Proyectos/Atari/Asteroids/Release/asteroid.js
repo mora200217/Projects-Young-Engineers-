@@ -3,6 +3,7 @@
 // http://patreon.com/codingtrain
 // Code for: https://youtu.be/hacZU523FyM
 
+// CLASS ASTEROID CREATED
 function Asteroid(pos, r) {
   if (pos) {
     this.pos = pos.copy();
