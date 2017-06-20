@@ -105,8 +105,8 @@ function Ship() {
       noFill();
       stroke(0);
     }
-    this.fixedPos = this.r;
-    triangle(0, this.fixedPos, -this.fixedPos / 2, this.fixedPos * 2, this.fixedPos / 2, this.fixedPos * 2);
+    this.fixedPos = this.r ;
+    triangle(0, this.fixedPos * 2 , -this.fixedPos / 4, this.fixedPos, this.fixedPos / 4, this.fixedPos);
 
   }
 
