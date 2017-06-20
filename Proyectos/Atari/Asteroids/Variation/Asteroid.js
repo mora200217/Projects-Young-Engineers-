@@ -1,16 +1,18 @@
 
 // ASTEROIDS FUNCTION
 function Asteroid(newPos, newSize){
+  this.vel = p5.Vector.fromAngle(Math.random() * 2 * PI, MAX_VEL * 10);
   if(newPos == newSize){
     this.pos = createVector(Math.random() * width,Math.random() * height);
     this.size = random(15,50);
   }else{
-    this.size = random(5,newSize);
+    this.size = random(5,10);
     this.newOffset = createVector(random(-5,5), random(-5,5));
-    this.newPos = newPos;
+    this.newPos = newPos.copy();
     this.pos = this.newPos.add(this.newOffset); // Copy Position
+    var force = p5.Vector.fromAngle(random(0,PI * 2));
+    this.vel.add(force);
   }
-  this.vel = p5.Vector.fromAngle(Math.random() * 2 * PI, MAX_VEL * 10);
   this.numVertex = floor(random(5,15));
   this.offset = [];
   for(var i = 0; i < this.numVertex; i++){
@@ -35,7 +37,7 @@ function Asteroid(newPos, newSize){
   }
   // COLLIDE FUNCTION
   this.collide = function(){
-    if(this.size <= MAX_ALLOWED_SIZE / 2){
+    if(this.size <= MAX_ASTEROID_SIZE / 3){
       console.log("Destroyed!");
       this.destroy();
     }else{
@@ -46,16 +48,19 @@ function Asteroid(newPos, newSize){
   // DIVIDE FUNCTION
   this.divide = function(){
     this.childAsteroids = map(this.size, 0, MAX_ASTEROID_SIZE, 2,4);
-    stroke(255);
-    noFill();
-    this.createNewAsteroid(this.pos, this.size);
+    this.createNewAsteroid();
     this.destroy();
+
   }
 
+  // IDEA: Create Animation for division (?) id:4
   // CREATE NEW ASTEROID FUNCTION
-  this.createNewAsteroid = function(inputPos, inputSize){
-    var elementA = new Asteroid(inputPos, inputSize);
-    asteroids.push(elementA);
+  this.createNewAsteroid = function(){
+    var newA = [];
+    newA[0] = new Asteroid(this.pos);
+    newA[1] = new Asteroid(this.pos);
+    asteroids.push(newA);
+    console.log(asteroids);
   }
 
   // DESTROY FUNCTION

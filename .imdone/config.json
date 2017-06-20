@@ -1,0 +1,693 @@
+{
+  "exclude": [
+    "^(node_modules|bower_components|\\.imdone|target|build|dist|logs)[\\/\\\\]?|\\.(git|svn|hg|npmignore)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
+  ],
+  "watcher": true,
+  "keepEmptyPriority": true,
+  "code": {
+    "include_lists": [
+      "TODO",
+      "DOING",
+      "DONE",
+      "PLANNING",
+      "FIXME",
+      "ARCHIVE",
+      "HACK",
+      "CHANGED",
+      "XXX",
+      "IDEA",
+      "NOTE",
+      "REVIEW",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "52",
+      "53",
+      "54",
+      "55",
+      "56",
+      "57",
+      "58",
+      "59",
+      "60",
+      "61",
+      "62",
+      "63",
+      "64",
+      "65",
+      "66",
+      "67",
+      "68",
+      "69",
+      "70",
+      "71",
+      "72",
+      "73",
+      "SXSW",
+      "AMMC16",
+      "GWN2015",
+      "BU",
+      "STEM",
+      "SOTU",
+      "ISS"
+    ]
+  },
+  "lists": [
+    {
+      "name": "IDEA",
+      "hidden": false
+    },
+    {
+      "name": "TODO",
+      "hidden": false
+    },
+    {
+      "name": "1",
+      "hidden": false
+    },
+    {
+      "name": "2",
+      "hidden": false
+    },
+    {
+      "name": "3",
+      "hidden": false
+    },
+    {
+      "name": "4",
+      "hidden": false
+    },
+    {
+      "name": "5",
+      "hidden": false
+    },
+    {
+      "name": "6",
+      "hidden": false
+    },
+    {
+      "name": "7",
+      "hidden": false
+    },
+    {
+      "name": "8",
+      "hidden": false
+    },
+    {
+      "name": "9",
+      "hidden": false
+    },
+    {
+      "name": "10",
+      "hidden": false
+    },
+    {
+      "name": "11",
+      "hidden": false
+    },
+    {
+      "name": "12",
+      "hidden": false
+    },
+    {
+      "name": "13",
+      "hidden": false
+    },
+    {
+      "name": "14",
+      "hidden": false
+    },
+    {
+      "name": "15",
+      "hidden": false
+    },
+    {
+      "name": "16",
+      "hidden": false
+    },
+    {
+      "name": "17",
+      "hidden": false
+    },
+    {
+      "name": "18",
+      "hidden": false
+    },
+    {
+      "name": "19",
+      "hidden": false
+    },
+    {
+      "name": "20",
+      "hidden": false
+    },
+    {
+      "name": "21",
+      "hidden": false
+    },
+    {
+      "name": "22",
+      "hidden": false
+    },
+    {
+      "name": "23",
+      "hidden": false
+    },
+    {
+      "name": "24",
+      "hidden": false
+    },
+    {
+      "name": "25",
+      "hidden": false
+    },
+    {
+      "name": "26",
+      "hidden": false
+    },
+    {
+      "name": "27",
+      "hidden": false
+    },
+    {
+      "name": "28",
+      "hidden": false
+    },
+    {
+      "name": "29",
+      "hidden": false
+    },
+    {
+      "name": "30",
+      "hidden": false
+    },
+    {
+      "name": "31",
+      "hidden": false
+    },
+    {
+      "name": "32",
+      "hidden": false
+    },
+    {
+      "name": "33",
+      "hidden": false
+    },
+    {
+      "name": "34",
+      "hidden": false
+    },
+    {
+      "name": "35",
+      "hidden": false
+    },
+    {
+      "name": "36",
+      "hidden": false
+    },
+    {
+      "name": "37",
+      "hidden": false
+    },
+    {
+      "name": "38",
+      "hidden": false
+    },
+    {
+      "name": "39",
+      "hidden": false
+    },
+    {
+      "name": "40",
+      "hidden": false
+    },
+    {
+      "name": "41",
+      "hidden": false
+    },
+    {
+      "name": "42",
+      "hidden": false
+    },
+    {
+      "name": "43",
+      "hidden": false
+    },
+    {
+      "name": "44",
+      "hidden": false
+    },
+    {
+      "name": "45",
+      "hidden": false
+    },
+    {
+      "name": "46",
+      "hidden": false
+    },
+    {
+      "name": "47",
+      "hidden": false
+    },
+    {
+      "name": "48",
+      "hidden": false
+    },
+    {
+      "name": "49",
+      "hidden": false
+    },
+    {
+      "name": "50",
+      "hidden": false
+    },
+    {
+      "name": "51",
+      "hidden": false
+    },
+    {
+      "name": "52",
+      "hidden": false
+    },
+    {
+      "name": "53",
+      "hidden": false
+    },
+    {
+      "name": "54",
+      "hidden": false
+    },
+    {
+      "name": "55",
+      "hidden": false
+    },
+    {
+      "name": "56",
+      "hidden": false
+    },
+    {
+      "name": "57",
+      "hidden": false
+    },
+    {
+      "name": "58",
+      "hidden": false
+    },
+    {
+      "name": "59",
+      "hidden": false
+    },
+    {
+      "name": "60",
+      "hidden": false
+    },
+    {
+      "name": "61",
+      "hidden": false
+    },
+    {
+      "name": "62",
+      "hidden": false
+    },
+    {
+      "name": "63",
+      "hidden": false
+    },
+    {
+      "name": "64",
+      "hidden": false
+    },
+    {
+      "name": "65",
+      "hidden": false
+    },
+    {
+      "name": "66",
+      "hidden": false
+    },
+    {
+      "name": "67",
+      "hidden": false
+    },
+    {
+      "name": "68",
+      "hidden": false
+    },
+    {
+      "name": "69",
+      "hidden": false
+    },
+    {
+      "name": "70",
+      "hidden": false
+    },
+    {
+      "name": "71",
+      "hidden": false
+    },
+    {
+      "name": "72",
+      "hidden": false
+    },
+    {
+      "name": "73",
+      "hidden": false
+    },
+    {
+      "name": "EndVeteransHomelessness",
+      "hidden": false
+    },
+    {
+      "name": "KidsStateDinner",
+      "hidden": false
+    },
+    {
+      "name": "LetGirlsLearn",
+      "hidden": false
+    },
+    {
+      "name": "StateOfWomen",
+      "hidden": false
+    },
+    {
+      "name": "StateofWomen",
+      "hidden": false
+    },
+    {
+      "name": "WHFilmFest",
+      "hidden": false
+    },
+    {
+      "name": "ReachHigher",
+      "hidden": false
+    },
+    {
+      "name": "MemorialDay",
+      "hidden": false
+    },
+    {
+      "name": "veterans",
+      "hidden": false
+    },
+    {
+      "name": "JoiningForces",
+      "hidden": false
+    },
+    {
+      "name": "LetsCelebrate",
+      "hidden": false
+    },
+    {
+      "name": "SXSW",
+      "hidden": false
+    },
+    {
+      "name": "YoungMindsMatter",
+      "hidden": false
+    },
+    {
+      "name": "EasterEggRoll",
+      "hidden": false
+    },
+    {
+      "name": "BlackHistoryMonth",
+      "hidden": false
+    },
+    {
+      "name": "DanceAtTheWhiteHouse",
+      "hidden": false
+    },
+    {
+      "name": "AMMC16",
+      "hidden": false
+    },
+    {
+      "name": "12DaysOfTakeovers",
+      "hidden": false
+    },
+    {
+      "name": "PovertyIsSexist",
+      "hidden": false
+    },
+    {
+      "name": "Periscope",
+      "hidden": false
+    },
+    {
+      "name": "GWN2015",
+      "hidden": false
+    },
+    {
+      "name": "InsideTheEastWing",
+      "hidden": false
+    },
+    {
+      "name": "Expo2015",
+      "hidden": false
+    },
+    {
+      "name": "LetGirlLearn",
+      "hidden": false
+    },
+    {
+      "name": "MagnaCarta",
+      "hidden": false
+    },
+    {
+      "name": "HuggerInChief",
+      "hidden": false
+    },
+    {
+      "name": "HomefrontPBS",
+      "hidden": false
+    },
+    {
+      "name": "BBKing",
+      "hidden": false
+    },
+    {
+      "name": "CommunityCollege",
+      "hidden": false
+    },
+    {
+      "name": "MothersDay",
+      "hidden": false
+    },
+    {
+      "name": "ThankATeacher",
+      "hidden": false
+    },
+    {
+      "name": "ChangeMentalHealth",
+      "hidden": false
+    },
+    {
+      "name": "BU",
+      "hidden": false
+    },
+    {
+      "name": "MilKids",
+      "hidden": false
+    },
+    {
+      "name": "STEM",
+      "hidden": false
+    },
+    {
+      "name": "KidsServeToo",
+      "hidden": false
+    },
+    {
+      "name": "JapanStateDinner",
+      "hidden": false
+    },
+    {
+      "name": "HireAVet",
+      "hidden": false
+    },
+    {
+      "name": "MayorsChallenge",
+      "hidden": false
+    },
+    {
+      "name": "AskTheSurgeonGeneral",
+      "hidden": false
+    },
+    {
+      "name": "FindYourPark",
+      "hidden": false
+    },
+    {
+      "name": "Vets",
+      "hidden": false
+    },
+    {
+      "name": "GimmeFive",
+      "hidden": false
+    },
+    {
+      "name": "CallToArts",
+      "hidden": false
+    },
+    {
+      "name": "Nowruz",
+      "hidden": false
+    },
+    {
+      "name": "GetCovered",
+      "hidden": false
+    },
+    {
+      "name": "AskTheWH",
+      "hidden": false
+    },
+    {
+      "name": "SOTU",
+      "hidden": false
+    },
+    {
+      "name": "FreeCommunityCollege",
+      "hidden": false
+    },
+    {
+      "name": "CollegeOpportunity",
+      "hidden": false
+    },
+    {
+      "name": "ExtraTV",
+      "hidden": false
+    },
+    {
+      "name": "AskTheFirstLady",
+      "hidden": false
+    },
+    {
+      "name": "HireWomenVets",
+      "hidden": false
+    },
+    {
+      "name": "FamiliesSucceed",
+      "hidden": false
+    },
+    {
+      "name": "PowerOfEducation",
+      "hidden": false
+    },
+    {
+      "name": "tbt",
+      "hidden": false
+    },
+    {
+      "name": "ISS",
+      "hidden": false
+    },
+    {
+      "name": "YearInReview",
+      "hidden": false
+    },
+    {
+      "name": "SmithsonianPanda",
+      "hidden": false
+    },
+    {
+      "name": "HonoringVets",
+      "hidden": false
+    },
+    {
+      "name": "Obamacare",
+      "hidden": false
+    },
+    {
+      "name": "LetsMove",
+      "hidden": false
+    },
+    {
+      "name": "LetsMoveGarden",
+      "hidden": false
+    },
+    {
+      "name": "FollowFriday",
+      "hidden": false
+    },
+    {
+      "name": "ThrowbackThursday",
+      "hidden": false
+    },
+    {
+      "name": "WHSocial",
+      "hidden": false
+    },
+    {
+      "name": "AskFLOTUS",
+      "hidden": false
+    }
+  ],
+  "marked": {
+    "gfm": true,
+    "tables": true,
+    "breaks": false,
+    "pedantic": false,
+    "smartLists": true,
+    "langPrefix": "language-"
+  },
+  "sync": {
+    "id": "5947272854082c2908039fd9",
+    "name": "Young Engineers",
+    "useImdoneioForPriority": true
+  },
+  "meta": {
+    "gh": {
+      "urlTemplate": "https://github.com/mora200217/Projects-Young-Engineers-/issues/%s",
+      "titleTemplate": "View github issue %s",
+      "icon": "icon-octoface"
+    }
+  }
+}
