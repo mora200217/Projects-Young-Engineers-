@@ -6,18 +6,21 @@
 // CLASS SHIP CREATED
 function Ship(initialLifes) {
   // Declare main initial atributes
-  this.lifes = initialLifes;
+  this.alreadyDied = false;
+  this.initialLifes = initialLifes;
   this.pos = createVector(width / 2, height / 2);
   this.r = 15;
-  this.heading = 0;
+  this.heading = PI * 3 / 2;
   this.rotation = 0;
   this.vel = createVector(0, 0);
   this.isBoosting = false;
   this.len = 0;
   this.showFire = false;
-  lifes = [];
-  for(var i = 0; i < initialLifes; i ++){
-    lifes.push(new life(i + 1,MAX_LIFES));
+  this.lifes = []
+  this.score = 0; // Initial Score of the player
+
+  for(var i = 0; i < this.initialLifes; i ++){
+    this.lifes.push(new life(i + 1,MAX_LIFES));
   }
   // BOOSTING FUNCTION
   this.boosting = function(b) {
@@ -35,8 +38,8 @@ function Ship(initialLifes) {
     this.pos.add(this.vel);
     this.vel.mult(0.99);
     for(var i = 0; i < initialLifes; i ++){
-      if(lifes[i] != null){
-        lifes[i].render();
+      if(this.lifes[i] != null){
+        this.lifes[i].render();
       }
     }
   }
@@ -77,6 +80,7 @@ function Ship(initialLifes) {
     endShape(CLOSE);
     this.fire();
     pop();
+    this.updateScore();
   }
 
   // EDGES FUNCTION
@@ -104,6 +108,13 @@ function Ship(initialLifes) {
     this.heading += this.rotation;
   }
 
+  // UPDAE SCORE FUNCTION
+  this.updateScore = function(){
+    noStroke();
+    fill(255);
+    textSize(this.r);
+    text("SCORE: " + this.score, SCORE_SEPARATION / 2, SCORE_SEPARATION);
+}
   // PARTICLE SYSTEM FUNCTION
   this.fire = function(){
     this.len = max(this.vel.x,this.vel.y  );

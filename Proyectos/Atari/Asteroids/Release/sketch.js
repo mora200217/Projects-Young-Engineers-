@@ -7,9 +7,11 @@ var ship;
 var asteroids = [];
 var lasers = [];
 
-var MAX_LIFES = 3; // Max lifes for the ship
+var MAX_LIFES = 10; // Max lifes for the ship
 var LIFE_RADIUS = 10;
 var LIFE_SEPARATION = 10;
+var SCORE_SEPARATION = 30;
+var MAX_SCORE = 500;
 // MAIN SETUP FUNCTION
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -25,9 +27,16 @@ function draw() {
 
   for (var i = 0; i < asteroids.length; i++) {
     if (ship.hits(asteroids[i])) {
-      lifes.splice(lifes.length - 1, 1);
-      ship.pos = createVector(width/2, height/2); 
+      ship.lifes.splice(ship.lifes.length - 1, 1);
+      ship.pos = createVector(width/2, height/2);
+      ship.vel.mult(0);
+      ship.heading = PI * 3 / 2;
       console.log("Hit!");
+      if(ship.lifes.length == 0){
+        console.log("Game Over!");
+        ship.alreadyDied = true;
+        gameOver();
+      }
     }
     asteroids[i].render();
     asteroids[i].update();
@@ -51,6 +60,8 @@ function draw() {
             var newAsteroids = asteroids[j].breakup(); // Invokes breakup funcrion
             asteroids = asteroids.concat(newAsteroids); // Cocatenates new asteroid
           }
+          // TODO:  Improve Score Adder system by adding a MAX_SIZE constant
+          ship.score += int(map(asteroids[j].r, 0, 10, 0, MAX_SCORE/100)) * 100;
           asteroids.splice(j, 1); // Deletes first asteroid from array
           lasers.splice(i, 1); // Deletes first laser from array
           break;
@@ -62,12 +73,12 @@ function draw() {
   // console.log(lasers.length);
 
   // Invokes respective functions for ship
-  ship.render();
-  ship.turn();
-  ship.update();
-  ship.edges();
-
-
+  if(ship.alreadyDied == false){
+    ship.render();
+    ship.turn();
+    ship.update();
+    ship.edges();
+  }
 }
 
 // KEY RELEASED EVENT FUNCTION
@@ -87,4 +98,9 @@ function keyPressed() {
   } else if (keyCode == UP_ARROW) {
     ship.boosting(true);
   }
+}
+
+// GAME OVER FUNCITON
+function gameOver(ship){
+
 }
