@@ -23,10 +23,12 @@ function Asteroid(pos, r) {
     this.offset[i] = random(-this.r * 0.5, this.r * 0.5);
   }
 
+  // UPDATE FUNCTION
   this.update = function() {
     this.pos.add(this.vel);
   }
 
+  // RENDER FUNCTION
   this.render = function() {
     push();
     stroke(255);
@@ -45,6 +47,7 @@ function Asteroid(pos, r) {
     pop();
   }
 
+  // BREAKUP FUNCTION
   this.breakup = function() {
     var newA = [];
     newA[0] = new Asteroid(this.pos, this.r);
@@ -52,6 +55,7 @@ function Asteroid(pos, r) {
     return newA;
   }
 
+  // EDGES FUNCTION
   this.edges = function() {
     if (this.pos.x > width + this.r) {
       this.pos.x = -this.r;
